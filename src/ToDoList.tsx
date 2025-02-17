@@ -43,7 +43,7 @@ const ToDoList = () => {
   const { register, handleSubmit, formState:{errors} } = useForm<IForm>({defaultValues: {
     email: "@naver.com",
   }});
-  const onValid = (data:any) => {
+  const onValid = (data:IForm) => {
     console.log(data);
   };
 

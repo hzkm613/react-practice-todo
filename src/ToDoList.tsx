@@ -40,13 +40,16 @@ const ToDoList = () => {
   //   </div>
   //  )
 
-  const { register, handleSubmit, formState:{errors} } = useForm<IForm>({defaultValues: {
+  const { register, handleSubmit, formState:{errors}, setError } = useForm<IForm>({defaultValues: {
     email: "@naver.com",
   }});
-  const onValid = (data:IForm) => {
-    console.log(data);
-  };
 
+  const onValid = (data:IForm) => {
+    if(data.password !== data.password1) {
+      setError('password1', {message:"Passwords do not match"}, {shouldFocus: true});
+    }
+  };
+console.log(errors);
   return (
     <div>
      <form style={{display: "flex", flexDirection:"column"}} onSubmit={handleSubmit(onValid)}>
@@ -69,7 +72,7 @@ const ToDoList = () => {
           placeholder="Last Name"
         />
         <span>{errors?.lastName?.message}</span>
-        <input {...register("username", { required: "Username must be longer than 3 letters", minLength: 3 })}
+        <input {...register("username", { required: "Username must be longer than 3 letters", validate:(value) => value.includes("admin") ? "You can not use admin as username" : true, minLength: 3 })}
           placeholder="Username"
         /> 
          <span>{errors?.username?.message}</span>
@@ -77,7 +80,7 @@ const ToDoList = () => {
           placeholder="Password"
         />
          <span>{errors?.password?.message}</span>
-        <input {...register("password1", { required: "Please re-enter the password" })}
+        <input {...register("password1", { required: "Please re-enter the password", minLength: { value: 5, message: "Password must be longer than 5 letters"} })}
             placeholder="Password1" />
           <span>{errors?.password1?.message}</span>
       <button>Add</button>

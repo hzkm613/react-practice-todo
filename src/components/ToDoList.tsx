@@ -2,7 +2,7 @@ import { useRecoilState, useRecoilValue} from 'recoil';
 import { Categories, categoryState, toDoSelector } from './atoms';
 import CreateToDo from './CreateToDo';
 import ToDo from './ToDo';
-
+import styled from 'styled-components';
 // interface IForm {
 //   email: string;
 //   firstName: string;
@@ -11,6 +11,19 @@ import ToDo from './ToDo';
 //   password: string;
 //   password1: string;
 // }
+
+ const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+ `;
+
+ const Title = styled.h1`
+  font-size: 32px;
+  margin-bottom: 32px;
+  `;
 
 const ToDoList = () => {
   // const toDos = useRecoilValue(toDoState);
@@ -23,9 +36,8 @@ const ToDoList = () => {
   };
 
   return (
-    <div>
-      <h1>To Dos</h1>
-      <hr />
+    <Wrap>
+      <Title>To Dos 📝</Title>
       <select value={category} onInput={onInput}>
         <option value={Categories.TO_DO}>To Do</option>
         <option value={Categories.DOING}>Doing</option>
@@ -49,7 +61,7 @@ const ToDoList = () => {
       </ul>
       <hr /> */}
       
-    </div>
+    </Wrap>
   );
 
   // Problem: You will have to manually create states and validations for each form

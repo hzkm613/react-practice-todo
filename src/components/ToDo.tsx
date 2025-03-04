@@ -1,6 +1,15 @@
 import { useSetRecoilState } from "recoil";
 import { Categories, IToDo, toDoState } from "./atoms";
 import React from "react";
+import styled from "styled-components";
+
+const ToDoContainer = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  padding: 10px 6px;
+  flex-direction: column;
+  `;
 
 function ToDo({ text, category, id }: IToDo) {
   const setToDos = useSetRecoilState(toDoState);

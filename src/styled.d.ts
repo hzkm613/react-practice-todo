@@ -5,5 +5,9 @@ declare module "styled-components" {
         textColor: string;
         bgColor: string;
         accentColor: string;
+        btnBackground: string;
+        btnBorderColor: string;
     }
 }
+
+//https://te6-in.github.io/nomad-to-do/

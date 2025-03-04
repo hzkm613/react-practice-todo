@@ -3,6 +3,9 @@ import { Categories, categoryState, toDoSelector } from './atoms';
 import CreateToDo from './CreateToDo';
 import ToDo from './ToDo';
 import styled from 'styled-components';
+import React from 'react';
+import { set } from 'react-hook-form';
+
 // interface IForm {
 //   email: string;
 //   firstName: string;
@@ -18,12 +21,41 @@ import styled from 'styled-components';
   align-items: center;
   justify-content: center;
   padding-top: 100px;
+  background-color: ${(props) => props.theme.bgColor};
  `;
 
  const Title = styled.h1`
   font-size: 32px;
   margin-bottom: 32px;
+  color: ${(props) => props.theme.accentColor};
   `;
+
+  const BtnWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  `;
+
+  const ToDoButton = styled.button`
+  padding: 4px;
+  margin-right: 10px;
+    &:last-child {
+    margin-right: 0;
+  }
+  margin-bottom: 16px;
+  background-color: ${(props) => props.theme.btnBackground};
+  color: ${(props) => props.theme.textColor};
+  border: 3px solid transparent;
+  border-radius: 10px;
+  padding: 12px 16px;
+    box-shadow: 1px 3px 3px rgba(136, 136, 136, 0.2);
+  transition: border 0.2s; 
+  &:focus {
+    color: ${(props) => props.theme.accentColor};
+    border: 3px solid ${(props) => props.theme.accentColor};
+  }
+`;
 
 const ToDoList = () => {
   // const toDos = useRecoilValue(toDoState);
@@ -31,18 +63,27 @@ const ToDoList = () => {
   //const [toDo, doing, done] = useRecoilValue(toDoSelector);
   const [category, setCategory] = useRecoilState(categoryState);
 
-  const onInput = (event:React.FormEvent<HTMLSelectElement>) => {
-    setCategory(event.currentTarget.value as any);
-  };
+  // const onInput = (event:React.FormEvent<HTMLSelectElement>) => {
+  //   setCategory(event.currentTarget.value as any);
+  // };
+
+  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setCategory(event.currentTarget.name as any);
+  }
 
   return (
     <Wrap>
-      <Title>To Dos 📝</Title>
-      <select value={category} onInput={onInput}>
+      <Title>To Do 📝</Title>
+      <BtnWrap>
+        <ToDoButton name={Categories.TO_DO+""} onClick={onClick}>To Do</ToDoButton>
+        <ToDoButton name={Categories.DOING+""} onClick={onClick}>Doing</ToDoButton>
+        <ToDoButton name={Categories.DONE+""} onClick={onClick}>Done</ToDoButton>
+      </BtnWrap>
+      {/* <select value={category} onInput={onInput}>
         <option value={Categories.TO_DO}>To Do</option>
         <option value={Categories.DOING}>Doing</option>
         <option value={Categories.DONE}>Done</option>
-      </select>
+      </select> */}
       <CreateToDo />
       {toDos?.map((toDo) => (<ToDo key={toDo.id} {...toDo} />))}
       {/* <h2>To Do</h2>

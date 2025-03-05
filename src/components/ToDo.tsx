@@ -80,13 +80,17 @@ function ToDo({ text, category, id }: IToDo) {
     });
   };
 
+  const onDelete = () => {
+    setToDos((oldToDos) => oldToDos.filter((toDo) => toDo.id !== id));
+  };
+
   return <ToDoContainer>
     <ToDoText>{text}</ToDoText> 
     <ToDoButtonContainer>
     {category !== Categories.DOING && (<ToDoButton name={Categories.DOING} onClick={onClick}>Doing</ToDoButton>)} 
     {category !== Categories.TO_DO && (<ToDoButton name={Categories.TO_DO} onClick={onClick}>To Do</ToDoButton>)} 
     {category !== Categories.DONE && (<ToDoButton name={Categories.DONE} onClick={onClick}>Done</ToDoButton>)} 
-    <ToDoButton>Delete</ToDoButton> 
+    <ToDoButton onClick={onDelete}>Delete</ToDoButton> 
     </ToDoButtonContainer>  
     </ToDoContainer>;
 }

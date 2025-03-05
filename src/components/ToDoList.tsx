@@ -13,6 +13,9 @@ import React from 'react';
 //   password: string;
 //   password1: string;
 // }
+interface ToDoButtonProps {
+  isSelected: boolean;
+}
 
  const Wrap = styled.div`
   display: flex;
@@ -37,7 +40,7 @@ import React from 'react';
   align-items: center;
   `;
 
-  const ToDoButton = styled.button`
+  const ToDoButton = styled.button<ToDoButtonProps>`
   padding: 4px;
   margin-right: 10px;
     &:last-child {
@@ -46,7 +49,7 @@ import React from 'react';
   margin-bottom: 16px;
   background-color: ${(props) => props.theme.btnBackground};
   color: ${(props) => props.theme.textColor};
-  border: 3px solid transparent;
+  border: 3px solid ${(props) => (props.isSelected ? props.theme.accentColor : 'transparent')};
   border-radius: 10px;
   padding: 12px 16px;
   box-shadow: 1px 3px 3px rgba(136, 136, 136, 0.2);
@@ -79,9 +82,9 @@ const ToDoList = () => {
     <Wrap>
       <Title>To Do 📝</Title>
       <BtnWrap>
-        <ToDoButton name={Categories.TO_DO} onClick={onClick}>To Do</ToDoButton>
-        <ToDoButton name={Categories.DOING} onClick={onClick}>Doing</ToDoButton>
-        <ToDoButton name={Categories.DONE} onClick={onClick}>Done</ToDoButton>
+        <ToDoButton name={Categories.TO_DO} onClick={onClick} isSelected={category === Categories.TO_DO}>To Do</ToDoButton>
+        <ToDoButton name={Categories.DOING} onClick={onClick} isSelected={category === Categories.DOING}>Doing</ToDoButton>
+        <ToDoButton name={Categories.DONE} onClick={onClick} isSelected={category === Categories.DONE}>Done</ToDoButton>
       </BtnWrap>
       {/* <select value={category} onInput={onInput}>
         <option value={Categories.TO_DO}>To Do</option>

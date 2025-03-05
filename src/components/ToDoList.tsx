@@ -52,7 +52,7 @@ interface ToDoButtonProps {
   border: 3px solid ${(props) => (props.isSelected ? props.theme.accentColor : 'transparent')};
   border-radius: 10px;
   padding: 12px 16px;
-  box-shadow: 1px 3px 3px rgba(136, 136, 136, 0.2);
+  box-shadow: ${(props) => props.theme.shadow};
   transition: border 0.2s; 
   &:hover {
     color: ${(props) => props.theme.accentColor};

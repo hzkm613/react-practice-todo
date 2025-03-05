@@ -38,10 +38,9 @@ const IconWrapper = styled.button`
   top: 50%;
   right: 4px;
   transform: translateY(-50%);
-  color: ${(props) => props.theme.accentColor}; 
-   cursor: pointer;
+  color: ${(props) => 
+    props.theme.bgColor === "#F7F7F7" ? props.theme.accentColor : props.theme.bgColor};
 `;
-
 const CreateToDo = () => {
 
   const setToDos = useSetRecoilState(toDoState);

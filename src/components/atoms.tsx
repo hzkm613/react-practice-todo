@@ -7,6 +7,13 @@ export enum Categories {
   "DOING" = "DOING",
   "DONE" = "DONE",
 }
+
+export const themeState = atom({
+  key: "theme",
+  default: "light",
+});
+
+
 export interface IToDo {
   id:number;
   text:string;

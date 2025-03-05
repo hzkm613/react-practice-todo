@@ -15,7 +15,7 @@ const ToDoContainer = styled.li`
   box-sizing: border-box;
   border-radius: 10px;
   background-color: ${(props) => props.theme.btnBackground};
-      box-shadow: 1px 3px 3px rgba(136, 136, 136, 0.2);
+  box-shadow: ${(props) => props.theme.shadow};
   `;
 
   const ToDoText = styled.span`
@@ -42,22 +42,22 @@ const ToDoContainer = styled.li`
   cursor: pointer;
   &:last-child {
     margin-right: 0;
-    background-color: #FFD1D1; /* Background color for last button */
+    background-color: #FFD1D1; 
     &:hover {
-      background-color: #FFC6C6; /* Hover color for last button */
+      background-color: #FFC6C6; 
     }
   }
 
   margin-bottom: 16px;
-  background-color: #E2E2E2; /* Default background color */
-  color: ${(props) => props.theme.textColor};
+  background-color: #E2E2E2; 
+  color: #252323;
   border: 3px solid transparent;
   border-radius: 10px;
   padding: 5px 10px;
   transition: border 0.2s;
 
   &:hover {
-    background-color: #D6D6D6; /* Hover color for other buttons */
+    background-color: #D6D6D6; 
   }
 `;
 

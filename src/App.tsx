@@ -1,5 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
 import ToDoList from './components/ToDoList';
+import { themeState } from './components/atoms';  
+import { lightTheme, darkTheme } from './theme'; 
+import { ThemeProvider } from 'styled-components';
+import NightlightRoundedIcon from '@mui/icons-material/NightlightRounded';
+import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
+import styled from 'styled-components';
+import { useRecoilState } from 'recoil';
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -66,12 +73,35 @@ table {
   border-spacing: 0;
 }`;
 
+const ToggleButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: ${(props) => props.theme.accentColor};
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+`;
+
+
 function App() {
+
+  const [theme, setTheme] = useRecoilState(themeState);
+
+  const toggleTheme = () => {
+    setTheme((current) => (current === 'light' ? 'dark' : 'light'));
+  };
+
   return (
-    <>
-      <GlobalStyle />
-      <ToDoList />
-    </>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+    <GlobalStyle />
+    <ToggleButton onClick={toggleTheme}>
+      {theme === 'light' ? <NightlightRoundedIcon /> : <LightModeRoundedIcon />}
+    </ToggleButton>
+    <ToDoList />
+  </ThemeProvider>
   )
 }
 

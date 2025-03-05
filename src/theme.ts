@@ -12,7 +12,7 @@ export const darkTheme: DefaultTheme = {
 export const lightTheme: DefaultTheme = {
     bgColor: "#F7F7F7",
     textColor: "#252323",
-    accentColor: "#9c88ff",
+    accentColor: "#6842FF",
     btnBackground: "#ffffff",
     btnBorderColor: "#9c88ff",
 };

@@ -12,7 +12,7 @@ const InputWrapper = styled.div`
   position: relative;
   width: 280px;
   height: auto;
-  margin-bottom: 10px;
+  margin-bottom: 24px;
 `;
 
 const ToDoInput = styled.input`
@@ -36,9 +36,10 @@ const IconWrapper = styled.button`
   border: none;
   position: absolute;
   top: 50%;
-  right: 0px;
+  right: 4px;
   transform: translateY(-50%);
   color: ${(props) => props.theme.accentColor}; 
+   cursor: pointer;
 `;
 
 const CreateToDo = () => {

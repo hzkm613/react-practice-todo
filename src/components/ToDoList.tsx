@@ -4,7 +4,6 @@ import CreateToDo from './CreateToDo';
 import ToDo from './ToDo';
 import styled from 'styled-components';
 import React from 'react';
-import { set } from 'react-hook-form';
 
 // interface IForm {
 //   email: string;
@@ -26,6 +25,7 @@ import { set } from 'react-hook-form';
 
  const Title = styled.h1`
   font-size: 32px;
+  font-weight: 600;
   margin-bottom: 32px;
   color: ${(props) => props.theme.accentColor};
   `;
@@ -49,9 +49,13 @@ import { set } from 'react-hook-form';
   border: 3px solid transparent;
   border-radius: 10px;
   padding: 12px 16px;
-    box-shadow: 1px 3px 3px rgba(136, 136, 136, 0.2);
+  box-shadow: 1px 3px 3px rgba(136, 136, 136, 0.2);
   transition: border 0.2s; 
-  &:focus {
+  &:hover {
+    color: ${(props) => props.theme.accentColor};
+    border: 3px solid ${(props) => props.theme.accentColor};
+  }
+     &:focus {
     color: ${(props) => props.theme.accentColor};
     border: 3px solid ${(props) => props.theme.accentColor};
   }
@@ -68,16 +72,16 @@ const ToDoList = () => {
   // };
 
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setCategory(event.currentTarget.name as any);
+    setCategory(event.currentTarget.name as Categories);
   }
 
   return (
     <Wrap>
       <Title>To Do 📝</Title>
       <BtnWrap>
-        <ToDoButton name={Categories.TO_DO+""} onClick={onClick}>To Do</ToDoButton>
-        <ToDoButton name={Categories.DOING+""} onClick={onClick}>Doing</ToDoButton>
-        <ToDoButton name={Categories.DONE+""} onClick={onClick}>Done</ToDoButton>
+        <ToDoButton name={Categories.TO_DO} onClick={onClick}>To Do</ToDoButton>
+        <ToDoButton name={Categories.DOING} onClick={onClick}>Doing</ToDoButton>
+        <ToDoButton name={Categories.DONE} onClick={onClick}>Done</ToDoButton>
       </BtnWrap>
       {/* <select value={category} onInput={onInput}>
         <option value={Categories.TO_DO}>To Do</option>

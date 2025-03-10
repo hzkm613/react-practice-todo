@@ -1,50 +1,37 @@
-# React + TypeScript + Vite
+# 📝 Mini To-Do App
+ Date: Oct 27, 2023
+ 
+Light Mode
+![image](https://github.com/user-attachments/assets/1e3655eb-e167-419e-9853-2245a53650a5)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dark Mode
+![image](https://github.com/user-attachments/assets/81f8fe06-11f3-4719-acbf-aeddc524b2f6)
 
-Currently, two official plugins are available:
+📌 **Overview:**
+This is a simple To-Do application built with React and TypeScript that allows users to create and manage tasks. Users can categorize tasks, track their status (To Do, Doing, Done), and delete them. Users can also toggle between dark mode and light mode. The app makes use of Recoil for state management and Styled Components for styling, providing a clean and maintainable user interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🎮 **Tech Stack & Tools:**
+- React
+- TypeScript
+- Recoil
+- Styled Components
 
-## Expanding the ESLint configuration
+🏆 **Key Achievements:**
+- **State Management with Recoil:** A major accomplishment was learning state management with Recoil, which simplifies sharing state between components without prop drilling or context. This is important for building scalable, predictable, and maintainable apps as they grow in complexity.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Component Separation:**: Another key achievement was learning how to break down the app into small, reusable components. This made the app much more maintainable, as each component had a single responsibility, which also facilitated easier testing and debugging.
 
-- Configure the top-level `parserOptions` property like this:
+- **Dark/Light Mode Toggle:** Implementing a theme switcher (dark/light mode) allowed me to experiment with CSS variables and dynamic theming, providing an improved user experience.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+⚡ **Challenges & Solutions:**
+- **Setting Up Theme Colors in theme.ts:** Ensuring the correct application of CSS variables and handling UI responses to theme changes took a bit of trial and error. Eventually, I centralized the theme colors and used Recoil to manage the theme state.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- **State Management with Recoil:**
+Initially, understanding how to structure the atoms, selectors, and updates to the global state took some time. Recoil's concepts were new to me, but after experimenting, I understood their use in building a more scalable state management system.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+🎯 **Takeaways:**
+- **Importance of State Management:**
+Managing state is essential for building scalable applications. Recoil made it easier to manage the state of the To-Do items, and learning how to use Recoil's atoms and selectors will help with future projects.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- **Componentization is Key:**
+Breaking down the UI into small, reusable components helped maintain a clean architecture and enabled easy updates or replacements in the future. Working with CSS variables and Recoil taught me how to implement global styles that can adapt to user preferences, which is an important feature for modern web apps.
